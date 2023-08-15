@@ -77,8 +77,8 @@ public class Actions implements ActionListener{
         
         //Buttons werden den Icons zugewiesen 
 		startButton = new JButton(scaledIcon1);
-		rightButton = new JButton(scaledIcon2);
-		leftButton = new JButton(scaledIcon3);
+		rightButton = new JButton(scaledIcon3);
+		leftButton = new JButton(scaledIcon2);
 		
 		//Für die schriftart
 		try {
@@ -113,8 +113,8 @@ public class Actions implements ActionListener{
 		panel2.add(startButton);
 		
 //		buttonPanel.setLayout(new BorderLayout());
-        buttonPanel.add(rightButton, BorderLayout.EAST);
-        buttonPanel.add(leftButton, BorderLayout.WEST);
+        buttonPanel.add(leftButton, BorderLayout.EAST);
+        buttonPanel.add(rightButton, BorderLayout.WEST);
 
 		frame.setTitle("ChooseYourOwnAdventure");
 		frame.setVisible(true);
