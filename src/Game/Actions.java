@@ -26,6 +26,7 @@ public class Actions implements ActionListener{
 	private JButton startButton, leftButton, rightButton;
 	private Font pixelArt;
 	private ImageIcon icon1, icon2, icon3;
+	private TreeNode currentNode;
 	
 	public Actions() {
 		frame = new JFrame();//Hier erstellen wir den GUI
@@ -130,35 +131,62 @@ public class Actions implements ActionListener{
 	 * Wenn dies geklickt wird, dann soll es das machen und wenn das, dann...
 	 */
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == startButton) {
-			label.setText("<html><body>Rules: The target is \"something\". You can choose your "
-					+ "<br>own path by choosing right or left before each decision. "
-					+ "<br>"
-					+ "<br>The cave is dark and damp. The light from your torch reveals "
-					+ "<br>stalactites hanging from the ceiling and strange rock formations "
-					+ "<br>along the walls. After a while you discover an inscription on a rock "
-					+ "<br>sticking out of the ground. The inscription is written in an ancient, "
-					+ "<br>forgotten language. You cannot decipher it, but it arouses your "
-					+ "<br>interest. Do you want to go further into the cave and look for more "
-					+ "<br>clues (Go right), or do you want to try to unravel the meaning of the "
-					+ "<br>inscription (Go left)?</body></html>");
+		if (e.getSource() == startButton) {
+			currentNode = createInitialTree(); // Erstelle den Entscheidungsbaum
+			updateLabel(currentNode.getText());
 			startButton.setVisible(false);
 			rightButton.setVisible(true);
 			leftButton.setVisible(true);
-		} else if(e.getSource() == rightButton) {
-			label.setText("<html><body>You chosen right: You decide to go deeper into the cave. "
-					+ "<br>Your footsteps echo off the walls as you walk down a narrow tunnel. "
-					+ "<br>Suddenly you reach a large chamber lit by torches. In the middle of "
-					+ "<br>the chamber you see an ancient chest. It is decorated with old "
-					+ "<br>carvings and looks mysterious. Open the chest (Go right), or examine "
-					+ "<br>the torches more closely (Go left)? </body></html>");
-		} else if(e.getSource() == leftButton) {
-			label.setText("<html><body>You chosen left You sit down on the floor and begin to "
-					+ "<br>study the inscription. After some time you manage to decipher a "
-					+ "<br>few words. They seem to speak of a legendary source of knowledge "
-					+ "<br>in this cave. Your mind is made up: you will go deeper into the "
-					+ "<br>cave to find this source. You return to the entrance and choose "
-					+ "<br>one of the tunnels leading deeper inside.</body></html>");
+		} else if (e.getSource() == rightButton) {
+			currentNode = currentNode.getRightChild();
+			updateLabel(currentNode.getText());
+			//Zweites rechts
+		} else if (e.getSource() == rightButton) {
+			currentNode = currentNode.getRightChild();
+			updateLabel(currentNode.getText());
+			
+		}else if(e.getSource()==leftButton)
+		currentNode=currentNode.getLeftChild();
+		updateLabel(currentNode.getText());
 		}
+	
+	private TreeNode createInitialTree() {
+		TreeNode root = new TreeNode("<html><body>Rules: The target is \"something\". You can choose your "
+				+ "<br>own path by choosing right or left before each decision. " + "<br>"
+				+ "<br>The cave is dark and damp. The light from your torch reveals "
+				+ "<br>stalactites hanging from the ceiling and strange rock formations "
+				+ "<br>along the walls. After a while you discover an inscription on a rock "
+				+ "<br>sticking out of the ground. The inscription is written in an ancient, "
+				+ "<br>forgotten language. You cannot decipher it, but it arouses your "
+				+ "<br>interest. Do you want to go further into the cave and look for more "
+				+ "<br>clues (Go right), or do you want to try to unravel the meaning of the "
+				+ "<br>inscription (Go left)?</body></html>");
+		TreeNode leftNode = new TreeNode("<html><body>You chosen left You sit down on the floor and begin to "
+				+ "<br>study the inscription. After some time you manage to decipher a "
+				+ "<br>few words. They seem to speak of a legendary source of knowledge "
+				+ "<br>in this cave. Your mind is made up: you will go deeper into the "
+				+ "<br>cave to find this source. You return to the entrance and choose "
+				+ "<br>one of the tunnels leading deeper inside.</body></html>");
+		TreeNode rightNode = new TreeNode("<html><body>You chosen right: You decide to go deeper into the cave. "
+				+ "<br>Your footsteps echo off the walls as you walk down a narrow tunnel. "
+				+ "<br>Suddenly you reach a large chamber lit by torches. In the middle of "
+				+ "<br>the chamber you see an ancient chest. It is decorated with old "
+				+ "<br>carvings and looks mysterious. Open the chest (Go right), or examine "
+				+ "<br>the torches more closely (Go left)? </body></html>");
+		TreeNode rightNode1 = new TreeNode("<html><body>Your path was very dark and that's"
+				+ "<br>why you didn't see the gorge below you. Unfortunately, "
+				+ "<br>you did not survive the fall..."
+				+ "<br>"
+				+ "<br>Press start:</body></html>");
+		
+		root.setLeftChild(leftNode);
+		root.setRightChild(rightNode);
+		rightNode.setRightChild(rightNode1);
+		rightNode1.setRightChild(root);
+		return root;
 	}
+
+	private void updateLabel(String labelText) {
+        label.setText("<html><body>" + labelText + "</body></html>");
+    }
 }
