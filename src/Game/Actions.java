@@ -56,6 +56,7 @@ public class Actions implements ActionListener{
         
         //Bild für Startbutton
         icon1 = new ImageIcon("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/Start.png");
+//      icon1 = new ImageIcon(Dein Pfad);
         int icon1Width = 75;
         int icon1Height = 50; 
         Image scaledImage1 = icon1.getImage().getScaledInstance(icon1Width, icon1Height, Image.SCALE_SMOOTH);
@@ -63,6 +64,7 @@ public class Actions implements ActionListener{
         
         //Bild füt rechtsbutton
         icon3 = new ImageIcon("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/right.png");
+//      icon3 = new ImageIcon(Dein Pfad);
         int icon3Width = 75;
         int icon3Height = 75; 
         Image scaledImage3 = icon3.getImage().getScaledInstance(icon3Width, icon3Height, Image.SCALE_SMOOTH);
@@ -70,6 +72,7 @@ public class Actions implements ActionListener{
         
         //Bild für leftbutton
         icon2 = new ImageIcon("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/left.png");
+//      icon2 = new ImageIcon(Dein Pfad);
         int icon2Width = 75;
         int icon2Height = 75; 
         Image scaledImage2 = icon2.getImage().getScaledInstance(icon2Width, icon2Height, Image.SCALE_SMOOTH);
@@ -83,6 +86,7 @@ public class Actions implements ActionListener{
 		//Für die schriftart
 		try {
 		    String fontPath = "/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/joystix monospace.ttf";
+//		    Pfad von tff
 		    pixelArt = Font.createFont(Font.TRUETYPE_FONT, new File(fontPath)).deriveFont(15f);
 		    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		    ge.registerFont(pixelArt);
