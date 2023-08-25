@@ -28,9 +28,6 @@ public class Actions implements ActionListener{
 	private ImageIcon icon1, icon2, icon3;
 	private TreeNode currentNode;
 	
-	//25.08.2023
-	//Hallo
-	
 	public Actions() {
 		frame = new JFrame();//Hier erstellen wir den GUI
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,8 +56,8 @@ public class Actions implements ActionListener{
         frame.add(panel2, BorderLayout.SOUTH);
         
         //Bild für Startbutton
-//      icon1 = new ImageIcon("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/Start.png");
-        icon1 = new ImageIcon("C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/Start.png");
+        icon1 = new ImageIcon("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/Start.png");
+//      icon1 = new ImageIcon("C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/Start.png");
         int icon1Width = 75;
         int icon1Height = 50; 
         Image scaledImage1 = icon1.getImage().getScaledInstance(icon1Width, icon1Height, Image.SCALE_SMOOTH);
