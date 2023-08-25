@@ -28,6 +28,8 @@ public class Actions implements ActionListener{
 	private ImageIcon icon1, icon2, icon3;
 	private TreeNode currentNode;
 	
+	//25.08.2023
+	
 	public Actions() {
 		frame = new JFrame();//Hier erstellen wir den GUI
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
