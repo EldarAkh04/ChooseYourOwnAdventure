@@ -41,7 +41,7 @@ public class Actions implements ActionListener{
 		panel2 = new JPanel();//Startbutton
 		buttonPanel = new JPanel();//rechts und links
 		
-		panel1.setBackground(Color.black);//Hintergrund soll schwarz sein
+		panel1.setBackground(Color.black);//Hintergrund soll schwarz sein2
 		panel1.setBounds(0, 0, 900, 500);//Wie groß Panel 1 ist
 		
 		panel2.setBackground(Color.black);
