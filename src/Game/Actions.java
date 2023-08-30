@@ -17,16 +17,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+
 public class Actions implements ActionListener{
 
 
 	private JLabel label;
 	private JFrame frame;
 	private JPanel panel1, panel2, buttonPanel;
-	private JButton startButton, leftButton, rightButton;
+	private JButton startButton, leftButton, rightButton, resetButton;
 	private Font pixelArt;
-	private ImageIcon icon1, icon2, icon3;
-	private TreeNode currentNode;
+	private ImageIcon icon1, icon2, icon3, icon4;
+	private TreeNode currentNode,root, leftNode, rightNode,rightNode1;
 	
 	public Actions() {
 		frame = new JFrame();//Hier erstellen wir den GUI
@@ -79,10 +80,18 @@ public class Actions implements ActionListener{
         Image scaledImage2 = icon2.getImage().getScaledInstance(icon2Width, icon2Height, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon2 = new ImageIcon(scaledImage2);
         
+        icon4 = new ImageIcon("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/reset.png");
+		int icon4Width = 50;
+		int icon4Height = 25;
+		Image scaledImage4 = icon4.getImage().getScaledInstance(icon2Width, icon2Height, Image.SCALE_SMOOTH);
+		ImageIcon scaledIcon4 = new ImageIcon(scaledImage4);
+
+        
         //Buttons werden den Icons zugewiesen 
 		startButton = new JButton(scaledIcon1);
 		rightButton = new JButton(scaledIcon3);
 		leftButton = new JButton(scaledIcon2);
+		resetButton = new JButton(scaledIcon4);
 		
 		//Für die schriftart
 		try {
@@ -110,9 +119,11 @@ public class Actions implements ActionListener{
 		startButton.addActionListener(this);
 		rightButton.addActionListener(this);
 		leftButton.addActionListener(this);
+		resetButton.addActionListener(this);
 		
 		rightButton.setVisible(false);
 		leftButton.setVisible(false);
+		resetButton.setVisible(false);
 		
 		panel1.add(label);
 		panel2.add(startButton);
@@ -120,6 +131,8 @@ public class Actions implements ActionListener{
 //		buttonPanel.setLayout(new BorderLayout());
         buttonPanel.add(leftButton, BorderLayout.EAST);
         buttonPanel.add(rightButton, BorderLayout.WEST);
+        buttonPanel.add(resetButton, BorderLayout.CENTER);
+
 
 		frame.setTitle("ChooseYourOwnAdventure");
 		frame.setVisible(true);
@@ -131,27 +144,38 @@ public class Actions implements ActionListener{
 	 * Wenn dies geklickt wird, dann soll es das machen und wenn das, dann...
 	 */
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == startButton) {
-			currentNode = createInitialTree(); // Erstelle den Entscheidungsbaum
-			updateLabel(currentNode.getText());
-			startButton.setVisible(false);
-			rightButton.setVisible(true);
-			leftButton.setVisible(true);
-		} else if (e.getSource() == rightButton) {
-			currentNode = currentNode.getRightChild();
-			updateLabel(currentNode.getText());
-			//Zweites rechts
-		} else if (e.getSource() == rightButton) {
-			currentNode = currentNode.getRightChild();
-			updateLabel(currentNode.getText());
-			
-		}else if(e.getSource()==leftButton)
-		currentNode=currentNode.getLeftChild();
-		updateLabel(currentNode.getText());
-		}
+	    if (e.getSource() == startButton) {
+	        currentNode = createInitialTree();
+	        updateLabel(currentNode.getText());
+	        startButton.setVisible(false);
+	        rightButton.setVisible(true);
+	        leftButton.setVisible(true);
+	    } else if (e.getSource() == rightButton) {
+	        currentNode = currentNode.getRightChild();
+	        updateLabel(currentNode.getText());
+	        //Zweites rechts
+	        if (currentNode == rightNode1) {
+	            rightButton.setVisible(false);
+	            leftButton.setVisible(false);
+	            resetButton.setVisible(true);
+	        }
+	        //Reset--> Wird wieder tum root geführt
+	    } else if (e.getSource() == resetButton) {
+	        currentNode = rightNode; 
+	        updateLabel(currentNode.getText());
+	        rightButton.setVisible(true);
+	        leftButton.setVisible(true);
+	        resetButton.setVisible(false);
+	        
+	        
+	    } else if (e.getSource() == leftButton) {
+	        currentNode = currentNode.getLeftChild();
+	        updateLabel(currentNode.getText());
+	    }
+	}
 	
 	private TreeNode createInitialTree() {
-		TreeNode root = new TreeNode("<html><body>Rules: The target is \"something\". You can choose your "
+		 root = new TreeNode("<html><body>Rules: The target is \"something\". You can choose your "
 				+ "<br>own path by choosing right or left before each decision. " + "<br>"
 				+ "<br>The cave is dark and damp. The light from your torch reveals "
 				+ "<br>stalactites hanging from the ceiling and strange rock formations "
@@ -161,28 +185,29 @@ public class Actions implements ActionListener{
 				+ "<br>interest. Do you want to go further into the cave and look for more "
 				+ "<br>clues (Go right), or do you want to try to unravel the meaning of the "
 				+ "<br>inscription (Go left)?</body></html>");
-		TreeNode leftNode = new TreeNode("<html><body>You chosen left You sit down on the floor and begin to "
+		 leftNode = new TreeNode("<html><body>You chosen left You sit down on the floor and begin to "
 				+ "<br>study the inscription. After some time you manage to decipher a "
 				+ "<br>few words. They seem to speak of a legendary source of knowledge "
 				+ "<br>in this cave. Your mind is made up: you will go deeper into the "
 				+ "<br>cave to find this source. You return to the entrance and choose "
 				+ "<br>one of the tunnels leading deeper inside.</body></html>");
-		TreeNode rightNode = new TreeNode("<html><body>You chosen right: You decide to go deeper into the cave. "
+		 rightNode = new TreeNode("<html><body>You chosen right: You decide to go deeper into the cave. "
 				+ "<br>Your footsteps echo off the walls as you walk down a narrow tunnel. "
 				+ "<br>Suddenly you reach a large chamber lit by torches. In the middle of "
 				+ "<br>the chamber you see an ancient chest. It is decorated with old "
 				+ "<br>carvings and looks mysterious. Open the chest (Go right), or examine "
 				+ "<br>the torches more closely (Go left)? </body></html>");
-		TreeNode rightNode1 = new TreeNode("<html><body>Your path was very dark and that's"
+		 rightNode1 = new TreeNode("<html><body>Your path was very dark and that's"
 				+ "<br>why you didn't see the gorge below you. Unfortunately, "
 				+ "<br>you did not survive the fall..."
 				+ "<br>"
 				+ "<br>Press start:</body></html>");
 		
-		root.setLeftChild(leftNode);
+		//Der Weg von den Nodes: Wenn du den Weg rechts einschlögst, dann wird dir der Pfad von rechts zugewiesen
+		 root.setLeftChild(leftNode);
 		root.setRightChild(rightNode);
 		rightNode.setRightChild(rightNode1);
-		rightNode1.setRightChild(root);
+		rightNode1.setRightChild(rightNode);
 		return root;
 	}
 

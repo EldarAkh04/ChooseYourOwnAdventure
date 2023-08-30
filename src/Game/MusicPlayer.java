@@ -22,7 +22,7 @@ public class MusicPlayer {
 	    {
 	        try {
 	        	playerPrepare(dateiname);
-	            player.play(500);
+	            player.play();
 	        }
 	        catch(JavaLayerException e) {
 	        	reportProblem(dateiname);

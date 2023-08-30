@@ -8,6 +8,5 @@ public class Main {
 		MusicPlayer mp = new MusicPlayer();
 		mp.playFile("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/bird-singing.WAV");
 		//mp.playFile("Truc");
-		//
 	}
 }
