@@ -81,6 +81,7 @@ public class Actions implements ActionListener{
         ImageIcon scaledIcon2 = new ImageIcon(scaledImage2);
         
         icon4 = new ImageIcon("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/reset.png");
+//      icon4 = new ImageIcon(Dein Pfad);
 		int icon4Width = 50;
 		int icon4Height = 25;
 		Image scaledImage4 = icon4.getImage().getScaledInstance(icon2Width, icon2Height, Image.SCALE_SMOOTH);
