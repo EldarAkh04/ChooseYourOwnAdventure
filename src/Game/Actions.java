@@ -205,7 +205,7 @@ public class Actions implements ActionListener{
 				+ "<br>Press start:</body></html>");
 		
 		//Der Weg von den Nodes: Wenn du den Weg rechts einschlögst, dann wird dir der Pfad von rechts zugewiesen
-		 root.setLeftChild(leftNode);
+		root.setLeftChild(leftNode);
 		root.setRightChild(rightNode);
 		rightNode.setRightChild(rightNode1);
 		rightNode1.setRightChild(rightNode);
