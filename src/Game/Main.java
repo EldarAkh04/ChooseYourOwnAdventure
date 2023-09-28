@@ -8,8 +8,8 @@ public class Main {
 	{
 		new Actions();
 		MusicPlayer mp = new MusicPlayer();
-//		mp.playFile("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/bird-singing.WAV");
-		mp.playFile("C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/bird-singing.WAV");
-        // okay das sollte jetzt funktionieren... hoffentlich kannst du sehen, dass ich etwas commited und dann gepushed habe :)
+		mp.playFile("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/bird-singing.WAV");
+//		mp.playFile("C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/bird-singing.WAV");
+        // Konnte es sehen :)
 	}
 }

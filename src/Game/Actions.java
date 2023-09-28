@@ -27,7 +27,9 @@ public class Actions implements ActionListener{
 	private JButton startButton, leftButton, rightButton, resetButton;
 	private Font pixelArt;
 	private ImageIcon icon1, icon2, icon3, icon4;
-	private TreeNode currentNode,root, leftNode, rightNode,rightNode1;
+	private TreeNode currentNode,root;
+	private TreeNode r, rr, rl, rll, rlr;
+	private TreeNode l, ll, lr;
 	
 	public Actions() {
 		frame = new JFrame();//Hier erstellen wir den GUI
@@ -57,31 +59,31 @@ public class Actions implements ActionListener{
         frame.add(panel2, BorderLayout.SOUTH);
         
         //Bild für Startbutton
-//        icon1 = new ImageIcon("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/Start.png");
-        icon1 = new ImageIcon("C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/Start.png");
+        icon1 = new ImageIcon("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/Start.png");
+//        icon1 = new ImageIcon("C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/Start.png");
         int icon1Width = 75;
         int icon1Height = 50; 
         Image scaledImage1 = icon1.getImage().getScaledInstance(icon1Width, icon1Height, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon1 = new ImageIcon(scaledImage1);
         
         //Bild füt rechtsbutton
-//        icon3 = new ImageIcon("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/right.png");
-        icon3 = new ImageIcon("C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/right.png");
+        icon3 = new ImageIcon("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/right.png");
+//        icon3 = new ImageIcon("C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/right.png");
         int icon3Width = 75;
         int icon3Height = 75; 
         Image scaledImage3 = icon3.getImage().getScaledInstance(icon3Width, icon3Height, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon3 = new ImageIcon(scaledImage3);
         
         //Bild für leftbutton
-//        icon2 = new ImageIcon("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/left.png");
-        icon2 = new ImageIcon("C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/left.png");
+        icon2 = new ImageIcon("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/left.png");
+//        icon2 = new ImageIcon("C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/left.png");
         int icon2Width = 75;
         int icon2Height = 75; 
         Image scaledImage2 = icon2.getImage().getScaledInstance(icon2Width, icon2Height, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon2 = new ImageIcon(scaledImage2);
         
-//        icon4 = new ImageIcon("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/reset.png");
-        icon4 = new ImageIcon("C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/reset.png");
+        icon4 = new ImageIcon("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/reset.png");
+//        icon4 = new ImageIcon("C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/reset.png");
 		int icon4Width = 50;
 		int icon4Height = 25;
 		Image scaledImage4 = icon4.getImage().getScaledInstance(icon2Width, icon2Height, Image.SCALE_SMOOTH);
@@ -96,9 +98,9 @@ public class Actions implements ActionListener{
 		
 		//Für die schriftart
 		try {
-//		    String fontPath = "/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/joystix monospace.ttf";
-		    String fontPath = "C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/joystix monospace.ttf";
-		    pixelArt = Font.createFont(Font.TRUETYPE_FONT, new File(fontPath)).deriveFont(15f);
+		    String fontPath = "/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/joystix monospace.ttf";
+//		    String fontPath = "C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/joystix monospace.ttf";
+		    pixelArt = Font.createFont(Font.TRUETYPE_FONT, new File(fontPath)).deriveFont(13f);
 		    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		    ge.registerFont(pixelArt);
 		} catch (IOException | FontFormatException e) {
@@ -106,13 +108,19 @@ public class Actions implements ActionListener{
 		}
 
 		
+		
+//		Du lauschst dem fröhlichen Zwitschern der Vögel, während das sanfte Rauschen 
+//		des Flusses deine Ohren umspielt. Perlen aus Schweiß gleiten langsam von deiner Stirn herab, während die Sonne ihre warmen Strahlen auf dich wirft und deine Augen zum Leuchten bringen.
+//		Als du erwachst, nimmst du behutsam deine Umgebung in den Blick. Du versuchst, die Fäden deiner Erinnerung zu entwirren, doch sie entziehen sich deinem Griff, wie Nebelschwaden im Morgenlicht.
+
 		//Ist Starttext vom Spiel--> wenn man den runner betätigt, dann taucht dieser text auf
-		label = new JLabel("<html><body>You are standing in front of the entrance to an old, "
-				+ "<br>weathered cave. The entrance is surrounded by wild greenery "
-				+ "<br>and the birds are chirping happily in the trees. "
-				+ "<br>You feel a mixture of excitement and nervousness "
-				+ "<br>as you decide to enter the cave. You switch on your "
-				+ "<br>torch and cautiously enter. </body></html>");
+		label = new JLabel("<html><body> Du lauschst dem fröhlichen Zwitschern der Vögel, während das"
+				+ "<br> sanfte Rauschen sanfte Rauschen während das sanfte Rauschen des Flusses deine"
+				+ "<br> Ohren umspielt. Perlen  aus Schweiss gleiten langsam von deiner Stirn herab,"
+				+ "<br> während die Sonne ihre warmen Strahlenauf dich wirft und deine Augen zum"
+				+ "<br> Leuchten bringen. Als du erwachst, nimmst du behutsam deine Umgebung in"
+				+ "<br> den Blick. Du versuchst, die Fäden deiner Erinnerung zu entwirren, doch"
+				+ "<br> sie entziehen sich deinem Griff, wie Nebelschwaden im Morgenlicht.</body></html>");
 		label.setBackground(Color.black);//Hintergrund schwarz 
 		label.setForeground(Color.white);//Schwrift ist weiß
 		label.setFont(pixelArt);
@@ -151,64 +159,90 @@ public class Actions implements ActionListener{
 	        startButton.setVisible(false);
 	        rightButton.setVisible(true);
 	        leftButton.setVisible(true);
+	        
 	    } else if (e.getSource() == rightButton) {
 	        currentNode = currentNode.getRightChild();
 	        updateLabel(currentNode.getText());
 	        //Zweites rechts
-	        if (currentNode == rightNode1) {
+	        if (currentNode == rr) {
+	            rightButton.setVisible(false);
+	            leftButton.setVisible(false);
+	            resetButton.setVisible(true);
+	        }
+	        
+	        if (currentNode == lr) {
 	            rightButton.setVisible(false);
 	            leftButton.setVisible(false);
 	            resetButton.setVisible(true);
 	        }
 	        //Reset--> Wird wieder tum root geführt
 	    } else if (e.getSource() == resetButton) {
-	        currentNode = rightNode; 
-	        updateLabel(currentNode.getText());
-	        rightButton.setVisible(true);
-	        leftButton.setVisible(true);
-	        resetButton.setVisible(false);
+	    	
+	    	if (currentNode == rr) {
+				currentNode = root; 
+				updateLabel(currentNode.getText());
+				rightButton.setVisible(true);
+				leftButton.setVisible(true);
+				resetButton.setVisible(false);
+			}
+	    	
+	    	if (currentNode == rll) {
+				currentNode = r; 
+				updateLabel(currentNode.getText());
+				rightButton.setVisible(true);
+				leftButton.setVisible(true);
+				resetButton.setVisible(false);
+			}
+	    	
+	    	if (currentNode == lr) {
+				currentNode = root; 
+				updateLabel(currentNode.getText());
+				rightButton.setVisible(true);
+				leftButton.setVisible(true);
+				resetButton.setVisible(false);
+			}
 	        
 	        
 	    } else if (e.getSource() == leftButton) {
 	        currentNode = currentNode.getLeftChild();
 	        updateLabel(currentNode.getText());
+	        
+	        if (currentNode == rll) {
+	            rightButton.setVisible(false);
+	            leftButton.setVisible(false);
+	            resetButton.setVisible(true);
+	        }
 	    }
 	}
 	
 	private TreeNode createInitialTree() {
-		 root = new TreeNode("<html><body>Rules: The target is \"something\". You can choose your "
-				+ "<br>own path by choosing right or left before each decision. " + "<br>"
-				+ "<br>The cave is dark and damp. The light from your torch reveals "
-				+ "<br>stalactites hanging from the ceiling and strange rock formations "
-				+ "<br>along the walls. After a while you discover an inscription on a rock "
-				+ "<br>sticking out of the ground. The inscription is written in an ancient, "
-				+ "<br>forgotten language. You cannot decipher it, but it arouses your "
-				+ "<br>interest. Do you want to go further into the cave and look for more "
-				+ "<br>clues (Go right), or do you want to try to unravel the meaning of the "
-				+ "<br>inscription (Go left)?</body></html>");
-		 leftNode = new TreeNode("<html><body>You chosen left You sit down on the floor and begin to "
-				+ "<br>study the inscription. After some time you manage to decipher a "
-				+ "<br>few words. They seem to speak of a legendary source of knowledge "
-				+ "<br>in this cave. Your mind is made up: you will go deeper into the "
-				+ "<br>cave to find this source. You return to the entrance and choose "
-				+ "<br>one of the tunnels leading deeper inside.</body></html>");
-		 rightNode = new TreeNode("<html><body>You chosen right: You decide to go deeper into the cave. "
-				+ "<br>Your footsteps echo off the walls as you walk down a narrow tunnel. "
-				+ "<br>Suddenly you reach a large chamber lit by torches. In the middle of "
-				+ "<br>the chamber you see an ancient chest. It is decorated with old "
-				+ "<br>carvings and looks mysterious. Open the chest (Go right), or examine "
-				+ "<br>the torches more closely (Go left)? </body></html>");
-		 rightNode1 = new TreeNode("<html><body>Your path was very dark and that's"
-				+ "<br>why you didn't see the gorge below you. Unfortunately, "
-				+ "<br>you did not survive the fall..."
-				+ "<br>"
-				+ "<br>Press start:</body></html>");
+		 root = new TreeNode("root");
+		 
+		 l = new TreeNode("l");
+		 ll = new TreeNode("ll");
+		 lr = new TreeNode ("lr-->x");
+		 
+		 r = new TreeNode("r");
+		 rr = new TreeNode("rr-->x");
+		 rl = new TreeNode("rl");
+		 rll = new TreeNode("rll-->x");
+		 rlr = new TreeNode("rlr");
+		 
 		
 		//Der Weg von den Nodes: Wenn du den Weg rechts einschlögst, dann wird dir der Pfad von rechts zugewiesen
-		root.setLeftChild(leftNode);
-		root.setRightChild(rightNode);
-		rightNode.setRightChild(rightNode1);
-		rightNode1.setRightChild(rightNode);
+		root.setLeftChild(l);
+		root.setRightChild(r);
+		
+		r.setRightChild(rr);
+		r.setLeftChild(rl);
+		rr.setRightChild(r);//-->Tod
+		rl.setRightChild(rlr);
+		rl.setLeftChild(rll);
+		rll.setLeftChild(r);//-->Tod
+		
+		l.setRightChild(lr);
+		l.setLeftChild(ll);
+		lr.setRightChild(root);//-->Tod
 		return root;
 	}
 
