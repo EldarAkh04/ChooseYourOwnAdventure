@@ -11,10 +11,5 @@ public class Main {
 		mp.playFile("src/bird-singing.WAV");
 //		mp.playFile("C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/bird-singing.WAV");
         // Konnte es sehen :)
-		writeText();
-	}
-	
-	public static void writeText() {
-		System.out.println("Hallo");
 	}
 }
