@@ -8,8 +8,13 @@ public class Main {
 	{
 		new Actions();
 		MusicPlayer mp = new MusicPlayer();
-		mp.playFile("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/bird-singing.WAV");
+		mp.playFile("src/bird-singing.WAV");
 //		mp.playFile("C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/bird-singing.WAV");
         // Konnte es sehen :)
+		writeText();
+	}
+	
+	public static void writeText() {
+		System.out.println("Hallo");
 	}
 }

@@ -59,7 +59,7 @@ public class Actions implements ActionListener{
         frame.add(panel2, BorderLayout.SOUTH);
         
         //Bild für Startbutton
-        icon1 = new ImageIcon("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/Start.png");
+        icon1 = new ImageIcon("src/Start.png");
 //        icon1 = new ImageIcon("C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/Start.png");
         int icon1Width = 75;
         int icon1Height = 50; 
@@ -67,7 +67,7 @@ public class Actions implements ActionListener{
         ImageIcon scaledIcon1 = new ImageIcon(scaledImage1);
         
         //Bild füt rechtsbutton
-        icon3 = new ImageIcon("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/right.png");
+        icon3 = new ImageIcon("src/right.png");
 //        icon3 = new ImageIcon("C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/right.png");
         int icon3Width = 75;
         int icon3Height = 75; 
@@ -75,18 +75,18 @@ public class Actions implements ActionListener{
         ImageIcon scaledIcon3 = new ImageIcon(scaledImage3);
         
         //Bild für leftbutton
-        icon2 = new ImageIcon("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/left.png");
+        icon2 = new ImageIcon("src/left.png");
 //        icon2 = new ImageIcon("C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/left.png");
         int icon2Width = 75;
         int icon2Height = 75; 
         Image scaledImage2 = icon2.getImage().getScaledInstance(icon2Width, icon2Height, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon2 = new ImageIcon(scaledImage2);
         
-        icon4 = new ImageIcon("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/reset.png");
+        icon4 = new ImageIcon("src/reset.png");
 //        icon4 = new ImageIcon("C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/reset.png");
-		int icon4Width = 50;
-		int icon4Height = 25;
-		Image scaledImage4 = icon4.getImage().getScaledInstance(icon2Width, icon2Height, Image.SCALE_SMOOTH);
+		int icon4Width = 75;
+		int icon4Height = 50;
+		Image scaledImage4 = icon4.getImage().getScaledInstance(icon4Width, icon4Height, Image.SCALE_SMOOTH);
 		ImageIcon scaledIcon4 = new ImageIcon(scaledImage4);
 
         
@@ -98,7 +98,7 @@ public class Actions implements ActionListener{
 		
 		//Für die schriftart
 		try {
-		    String fontPath = "/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/joystix monospace.ttf";
+		    String fontPath = "src/joystix monospace.ttf";
 //		    String fontPath = "C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/joystix monospace.ttf";
 		    pixelArt = Font.createFont(Font.TRUETYPE_FONT, new File(fontPath)).deriveFont(13f);
 		    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -109,10 +109,6 @@ public class Actions implements ActionListener{
 
 		
 		
-//		Du lauschst dem fröhlichen Zwitschern der Vögel, während das sanfte Rauschen 
-//		des Flusses deine Ohren umspielt. Perlen aus Schweiß gleiten langsam von deiner Stirn herab, während die Sonne ihre warmen Strahlen auf dich wirft und deine Augen zum Leuchten bringen.
-//		Als du erwachst, nimmst du behutsam deine Umgebung in den Blick. Du versuchst, die Fäden deiner Erinnerung zu entwirren, doch sie entziehen sich deinem Griff, wie Nebelschwaden im Morgenlicht.
-
 		//Ist Starttext vom Spiel--> wenn man den runner betätigt, dann taucht dieser text auf
 		label = new JLabel("<html><body> Du lauschst dem fröhlichen Zwitschern der Vögel, während das"
 				+ "<br> sanfte Rauschen sanfte Rauschen während das sanfte Rauschen des Flusses deine"
