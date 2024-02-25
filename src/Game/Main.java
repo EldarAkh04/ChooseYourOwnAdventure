@@ -2,9 +2,14 @@ package Game;
 
 public class Main {
 
-	public static void main(String[] args) 
+	private static MusicPlayer mp;
+
+	public static void main(String[] args)
 	{
-		System.out.println("Hello World!");
-		System.out.println("Blablablabla...");
+		new Actions();
+		MusicPlayer mp = new MusicPlayer();
+		mp.playFile("/Users/eldarakhundzada/Documents/GitHub/ChooseYourOwnAdventure/src/Game/bird-singing.WAV");
+//		mp.playFile("C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/bird-singing.WAV");
+        // Konnte es sehen :)
 	}
 }
