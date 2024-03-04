@@ -8,8 +8,8 @@ public class Main {
 	{
 		new Actions();
 		MusicPlayer mp = new MusicPlayer();
-		mp.playFile("src/bird-singing.WAV");
-//		mp.playFile("C:/Users/kieut/Documents/GitHub/ChooseYourOwnAdventure/src/Game/bird-singing.WAV");
-        // Konnte es sehen :)
+		while(true) {
+		mp.playFile("src/Mittelalter.mp3");
+		}
 	}
 }
